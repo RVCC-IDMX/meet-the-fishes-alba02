@@ -86,7 +86,75 @@ my_sprite3.y=200;
   
 
 //add animations
+async function idleSwim1() {
+                await Animate.to(my_sprite,{
+                    x:200,y:320,
+                    duration:2000,
+                    easing:Animate.easeInOut
+                    
+                });
+                await Animate.to(my_sprite,{
+                    x:300,y:280,
+                    duration:2000,
+                    easing:Animate.easeInOut
+                });
+                idleSwim1();
+            }
+            idleSwim1();
+//idley bob fish 
 
+            async function idleBob() {
+
+               
+              await Animate.to(my_sprite2,{
+                    x:300,y:300,
+                    duration:1200,
+                    easing:Animate.easeInOut
+                });
+                await Animate.to(my_sprite2,{
+                    x:300,y:250,
+                    duration:1200,
+                    easing:Animate.easeInOut
+                   
+                });
+            
+              
+    
+                idleBob();
+            }
+            idleBob();
+       
+           
+
+
+
+            async function idleSwim3() {
+                await Animate.to(my_sprite3,{
+                    x:300,y:200,
+                    duration:2000,
+                    easing:Animate.easeInOut
+                });
+                await Animate.to(my_sprite3,{
+                    x:400,y:300,
+                    duration:2000,
+                    easing:Animate.easeInOut
+                });
+                idleSwim3();
+            }
+            idleSwim3();
+
+           
+            let goUp = async () => {
+            await Animate.to(my_sprite2, {
+                x: 100, y: 40,
+                 duration: 3000, 
+                 easing:Animate.easeIn});
+            await Animate.to(my_sprite2, {
+                x: 50, y: 100, 
+                duration: 3000,
+                 easing:Animate.easeOut});
+            idleBob();
+        }
 
 
 
