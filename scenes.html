@@ -165,7 +165,7 @@ async function idleSwim1() {
     let scene1 = new PIXI.Container();
 
     //Using our button object let's create a "next" button.
-    let nextButton = UI.Button(0,0,"Next >");
+    let nextButton = UI.Button(0,0,"Next >",{fill:0xFFFFFF,} );
     
     //Let's place it in the bottom right-hand corner of the screen (regardless of size)
     nextButton.x = app.view.width  - nextButton.width;
@@ -360,8 +360,24 @@ scene4.addChild(scene4Text);
         scene1.alpha = 1;
     }
 
-    
+    /*new transition 
+    nextButton.onclick = async () => {
+        //Fade out current scene
+        await Animate.to(scene2,{duration:500,easing:Animate.easeOut});
+        //Remove it from stage
+        app.stage.removeChild(scene2);
+        //Set next scene to zero alpha
+        scene3.alpha = 0;
+        //Add it to the stage
+        app.stage.addChild(scene3);
+        //Fade it in
+        await Animate.to(scene3,{duration:500, easing:Animate.rotate});
+        //Reset the off-stage scene's alpha back
+        scene3.alpha = 1;
+    }
 
+
+*/
        // Or how about a swipe transition?
 
     
