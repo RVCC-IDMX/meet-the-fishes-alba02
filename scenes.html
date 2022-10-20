@@ -265,16 +265,6 @@ backButton_3.y = app.view.height - backButton_3.height;
 //And place it into the scene
 scene4.addChild(backButton_3);
 
-   //Using our button object let's create a "next" button.
-   let nextButton_4 = UI.Button(0,0,"Next >");
-    
-    //Let's place it in the bottom right-hand corner of the screen (regardless of size)
-    nextButton_4.x = app.view.width  - nextButton_4.width;
-    nextButton_4.y = app.view.height - nextButton_4.height;
-
-    //And place it into the scene
-    scene4.addChild(nextButton_4);
-
 //And let's also add some text to tell us which scene we're on
 let scene4Text = new PIXI.Text("Meet fish 3: Nemo",{fill:0xFFFFFF,
 fontSize: 35});
@@ -361,7 +351,7 @@ scene4.addChild(scene4Text);
     }
 
     /*new transition 
-    nextButton.onclick = async () => {
+    nextButton_3.onclick = async () => {
         //Fade out current scene
         await Animate.to(scene2,{duration:500,easing:Animate.easeOut});
         //Remove it from stage
@@ -375,14 +365,14 @@ scene4.addChild(scene4Text);
         //Reset the off-stage scene's alpha back
         scene3.alpha = 1;
     }
-
-
 */
+
+
        // Or how about a swipe transition?
 
     
 
-    nextButton.onclick = async () => {
+    nextButton_2.onclick = async () => {
         //Set up next scene on the right
         scene2.x = app.view.width;
         app.stage.addChild(scene2);
@@ -543,6 +533,11 @@ scene4.addChild(scene4Text);
                 nextSceneStartY = -app.view.height;
             }
 
+
+
+            //custom transition
+            
+
             //Set up next scene
             nextScene.x = nextSceneStartX;
             nextScene.y = nextSceneStartY;
@@ -582,15 +577,15 @@ scene4.addChild(scene4Text);
 
 
     nextButton.onclick = () => {
-        Director.showScene("second");
+        Director.showScene("second", { transition: Director.swipe});
     }
 
     backButton.onclick = () => {
-        Director.showScene("first");
+        Director.showScene("first", {transition: Director.swipe,direction: "right" });
     }
 //button 2
     nextButton_2.onclick = () => {
-        Director.showScene('third');
+        Director.showScene('third',{transition: Director.swipe,direction: "up" });
       };
 
       backButton_2.onclick = () => { 

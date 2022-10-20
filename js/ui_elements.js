@@ -10,12 +10,12 @@ var UI = {
             params = {};
         }
         if (params.backgroundColor == undefined)
-            params.backgroundColor = 0xEEEEEE;
+            params.backgroundColor = 0x03138c;
         if (params.textStyle == undefined) {
             params.textStyle = {
-                fontFamily : 'Arial', 
-                fontSize: 24, 
-                fill : 0x000000
+                fontFamily : 'serif', 
+                fontSize: 30, 
+                fill : 0xFFFFFF,
             }
         }
 
@@ -30,7 +30,7 @@ var UI = {
 
         var buttonBody = new PIXI.Graphics();
             buttonBody.beginFill(params.backgroundColor);
-            buttonBody.drawRect(0, 0, 200, 100);
+            buttonBody.drawRect(0, 0, 200, 80);
             ourButton.addChild(buttonBody);
 
             ourButton.body = buttonBody;
@@ -38,7 +38,7 @@ var UI = {
         var buttonText = new PIXI.Text(text,params.textStyle);
             buttonText.anchor.set(.5,.5);
             buttonText.x = 100;
-            buttonText.y = 50;
+            buttonText.y = 40;
             ourButton.addChild(buttonText);
 
             ourButton.label = buttonText;
