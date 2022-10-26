@@ -455,6 +455,7 @@ scene4.addChild(scene4Text);
 
             if (params.transition == undefined)
                 params.transition = Director.cut;
+            
 
             await params.transition(currentScene, nextScene, params);
 
@@ -492,6 +493,33 @@ scene4.addChild(scene4Text);
             //Reset the off-stage scene's alpha back
             currentScene.alpha = 1;
         },
+
+
+        
+            //custom transition
+                    //Fade between
+        
+                    blur : async (currentScene, nextScene, params) => {
+                // Check duration
+                if (params == undefined) params = {};
+                if (params.duration == undefined) params.duration = 500;
+                // Unfocus current scene
+                await Animate.to(currentScene, { alpha: 0, duration: params.duration / 2 });
+                // Remove it from stage
+                app.stage.removeChild(currentScene);
+                // Apply Blur Filter
+                app.stage.filters = [new PIXI.filters.BlurFilter()];
+                // Set next scene to zero alpha
+                nextScene.alpha = 0;
+                // Add it to the stage
+                app.stage.addChild(nextScene);
+                // Remove Blur Filter
+                app.stage.filters = false;
+                // Focus in to new scene
+                await Animate.to(nextScene, { alpha: 1, duration: params.duration / 2 });
+                // Reset the off-stage scene's alpha back
+                currentScene.alpha = 1;
+            },
 
         //Slide in a particular direction
         swipe : async (currentScene,nextScene,params) => {
@@ -532,11 +560,7 @@ scene4.addChild(scene4Text);
                 nextSceneStartX = 0;
                 nextSceneStartY = -app.view.height;
             }
-
-
-
-            //custom transition
-            
+    
 
             //Set up next scene
             nextScene.x = nextSceneStartX;
@@ -593,7 +617,7 @@ scene4.addChild(scene4Text);
       };
 
       nextButton_3.onclick = () => {
-        Director.showScene('fourth');
+        Director.showScene('fourth', {transition: Director.bounce});
       };
       backButton_3.onclick = () => {
         Director.showScene('third', { transition: Director.fade });
